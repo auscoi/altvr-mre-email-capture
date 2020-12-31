@@ -8,7 +8,7 @@ export default class EmailCapture {
 	private DEBUG = true;
 
 	// Internal List of Emails
-	private EmailList:{ [userId:string] : {email: string} } = {};
+	private EmailList: Map<string,string> = new Map(); 
 		
 	// Buttons
 	private buttonMaterial: MRE.Material;
@@ -58,7 +58,7 @@ export default class EmailCapture {
 		const emailAddress = this.userInput.text.toLowerCase();
 
 		// ADD TO LIST
-		this.EmailList[userId] = emailAddress;
+		this.EmailList.set(userId, emailAddress)
 		
 		// RETURN
 		return await user.prompt("You entered: " + emailAddress + "\n\nPrepare for SPAM fool! MWUAHAHA!!");
